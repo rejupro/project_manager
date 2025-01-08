@@ -5,7 +5,7 @@ export function filterItems(items, query) {
   );
 }
 
-export const data = [
+export const initialData = [
   {
     id: crypto.randomUUID(),
     title: "Dummy Title 1",
@@ -32,7 +32,7 @@ export const data = [
     title: "Dummy Title 4",
     text: "Dummy text 4",
     date: "2023-10-04",
-    category: "On Progress",
+    category: "On-Progress",
   },
   {
     id: crypto.randomUUID(),

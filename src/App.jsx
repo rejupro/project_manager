@@ -1,20 +1,21 @@
+import { useReducer } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import Aside from "./components/Aside";
-import Header from "./components/Header";
-import ProjectBoard from "./components/ProjectBoard";
+import { ProjectContext } from "./contexts";
+import { initialData } from "./data/Data";
+import Page from "./Page";
+import { projectReducer } from "./reducers/tasksReducer";
 
 function App() {
+  const [datas, dispatch] = useReducer(projectReducer, initialData);
+
   return (
     <>
-      <div className="bg-gray-900 text-white ">
-        <div className="flex h-screen">
-          <Aside />
-          <main className="flex-1 overflow-y-auto overflow-x-hidden">
-            <Header />
-            <ProjectBoard />
-          </main>
-        </div>
-      </div>
+      <ProjectContext.Provider value={{ datas, dispatch }}>
+        <Page />
+        <ToastContainer />
+      </ProjectContext.Provider>
     </>
   );
 }

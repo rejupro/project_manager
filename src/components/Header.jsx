@@ -1,4 +1,12 @@
+import { useContext, useState } from "react";
+import { ProjectContext } from "../contexts";
 export default function Header() {
+  const { dispatch } = useContext(ProjectContext);
+  const [search, setSearch] = useState("");
+  const searchOnChange = (e) => {
+    setSearch(e.target.value);
+    // dispatch({ type: "search", payload: e.target.value });
+  };
   return (
     <header className="flex items-center justify-between bg-gray-800 p-4">
       <button className="lg:hidden">
@@ -20,6 +28,8 @@ export default function Header() {
       <div className="mx-4 flex-1">
         <input
           type="text"
+          onChange={searchOnChange}
+          value={search}
           placeholder="Search here"
           className="w-full max-w-xl rounded-full bg-gray-700 px-4 py-2 text-white focus:outline-none"
         />
